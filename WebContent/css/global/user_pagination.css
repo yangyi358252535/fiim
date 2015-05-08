@@ -1,0 +1,214 @@
+@charset "utf-8";
+
+DIV.quotes {
+	PADDING-RIGHT: 3px;
+	PADDING-LEFT: 3px;
+	PADDING-BOTTOM: 3px;
+	MARGIN: 3px;
+	PADDING-TOP: 3px;
+	TEXT-ALIGN: center
+}
+
+DIV.quotes A {
+	BORDER-RIGHT: #ddd 1px solid;
+	PADDING-RIGHT: 5px;
+	BORDER-TOP: #ddd 1px solid;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 2px;
+	BORDER-LEFT: #ddd 1px solid;
+	COLOR: #105a96;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #ddd 1px solid;
+	TEXT-DECORATION: none
+}
+
+DIV.quotes A:hover {
+	BORDER-RIGHT: #105a96 1px solid;
+	PADDING-RIGHT: 5px;
+	BORDER-TOP: #105a96 1px solid;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 2px;
+	BORDER-LEFT: #105a96 1px solid;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #105a96 1px solid
+}
+
+DIV.quotes A:active {
+	BORDER-RIGHT: #a0a0a0 1px solid;
+	PADDING-RIGHT: 5px;
+	BORDER-TOP: #a0a0a0 1px solid;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 2px;
+	BORDER-LEFT: #a0a0a0 1px solid;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #a0a0a0 1px solid
+}
+
+DIV.quotes SPAN.current {
+	BORDER-RIGHT: #c7c6c6 1px solid;
+	PADDING-RIGHT: 5px;
+	BORDER-TOP: #c7c6c6 1px solid;
+	PADDING-LEFT: 5px;
+	FONT-WEIGHT: bold;
+	PADDING-BOTTOM: 2px;
+	BORDER-LEFT: #c7c6c6 1px solid;
+	COLOR: #979797;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #c7c6c6 1px solid;
+	BACKGROUND-COLOR: #f0f0f0
+}
+
+.pagination {
+	font-size: 14px;
+	float: right;}
+
+.pagination a {
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 2px;
+	COLOR: #A6A6A6;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	font-size: 14px;
+	TEXT-DECORATION: none
+}
+
+.pagination b {
+	margin-right: 5px;
+	font-size: 14px;
+	color: #5DB6E0;}
+
+.pagination .current {
+	BORDER-RIGHT: #c7c6c6 1px solid;
+	PADDING-RIGHT: 5px;
+	BORDER-TOP: #c7c6c6 1px solid;
+	PADDING-LEFT: 5px;
+	FONT-WEIGHT: bold;
+	PADDING-BOTTOM: 2px;
+	BORDER-LEFT: #c7c6c6 1px solid;
+	COLOR: #979797;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #c7c6c6 1px solid;
+	BACKGROUND-COLOR: #f0f0f0
+}
+
+DIV.quotes SPAN.disabled {
+	BORDER-RIGHT: #e1e1e1 1px solid;
+	PADDING-RIGHT: 5px;
+	BORDER-TOP: #e1e1e1 1px solid;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 2px;
+	BORDER-LEFT: #e1e1e1 1px solid;
+	COLOR: #ccc;
+	MARGIN-RIGHT: 2px;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #e1e1e1 1px solid
+}
+
+.pagination {
+	margin-top:20px !important;
+	margin-bottom:20px !important;
+	float: right !important;
+	line-height:28px !important;
+	font-size: 14px !important;
+	text-align:center;
+}
+
+.pagination .current,.pagination .prev,.pagination .next,.pagination .item , .pagination .total_num, .pagination span{
+	float:left;
+	height:28px !important;
+	padding:0 9px !important;
+	margin:0 !important;
+	border: none !important;
+	font-weight: normal !important;
+}
+
+.pagination .prev {
+	width:26px;
+	padding:0 !important;
+	background:url(../../imges/movie/prev.png) no-repeat center center;
+}
+
+.pagination a.prev:hover {
+	background:url(../../imges/movie/prev-hover.png) no-repeat center center;
+}
+
+
+.pagination .next {
+	width:26px;
+	padding:0 !important;
+	background:url(../../imges/movie/next.png) no-repeat center center;
+}
+
+.pagination a.next:hover {
+	background:url(../../imges/movie/next-hover.png) no-repeat center center;
+}
+
+.pagination .item{
+	color: #909090 !important;
+}
+.pagination .item:hover {
+	background-color:transparent !important;
+	color: #2E92CF !important;
+}
+
+.pagination .current {
+	background-color: #2E92CF !important;
+	color: #fff !important;
+	font-weight: normal !important;
+}
+
+.pagination .current:hover {
+	background-color: #2E92CF !important;
+	color: #fff !important;
+	font-weight: normal !important;
+}
+
+
+ .pagination .total_num{
+	letter-spacing: 1px;
+	width:auto;
+	margin-left: 5px !important;
+}
+
+.pagination .total_num ins{
+	color:#808080;
+	padding:0 3px;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.pagination input[type="button"] {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	color: #105a96;
+	padding: 2px 5px;
+	margin-left: 8px;
+	cursor: pointer;
+}
+
+.pagination input[type="button"] {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	color: #105a96;
+	padding: 2px 5px;
+	margin-left: 8px;
+	cursor: pointer;
+}
+
+.pagination input[type="button"]:hover {
+	background-color: #5db6e0;
+	border: 1px solid #5db6e0;
+	color: #fff;
+}
+
+.pagination input[type="text"] {
+	height: 18px;
+	margin: 0 3px;
+	text-align: center;
+}

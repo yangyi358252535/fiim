@@ -1,0 +1,920 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" --><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="description" content=""></meta>
+<meta name="Keywords" content=""></meta>
+<title>XXXXXX</title>
+<link type="text/css" rel="stylesheet" href="styles/base.css"></link>
+<link type="text/css" rel="stylesheet" href="styles/movie_times.css"></link>
+<link href="styles/jquery/ui-lightness/jquery-ui-1.8.5.custom.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jsArray/cityArray.js"></script>
+<script type="text/javascript" src="js/jsArray/prvArray.js"></script>
+<script type="text/javascript" src="js/jsArray/cinemaArray.js"></script>
+<script type="text/javascript" src="js/jsArray/groupCityArray.js"></script>
+<script type="text/javascript" src="js/func/getArray.js"></script>
+<script type="text/javascript" src="js/func/printCity.js"></script>
+<script type="text/javascript" src="js/plus/jquery.boxy.js"></script>
+<script type="text/javascript" src="js/plus/ylDropDownList-1.2.js"></script>
+<link rel="stylesheet" rev="stylesheet" href="css/global/boxy.css" type="text/css" media="screen"></link>
+<link rel="stylesheet" rev="stylesheet" href="css/global/quicklogin.css" media="screen"></link>
+<script  type="text/javascript" src="js/countrecord.js?userName="></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+<style type="">
+#filmDiv a{width:202px;}
+#cinemaDiv a{width:270px;}
+</style>
+</head>
+<body>
+
+
+
+<div id="head">
+	<div id="headnav">
+		<div id="headnav2" class="clearfix">
+			<div id="loginDiv">
+		 		<a href="" class="aashy2lightblue" id="home-link">首页</a>
+				   		<a href="javascript:void(0);" class="aashy2lightblue" rel="nofollow" id="logind">登录</a>
+			   			<a href="common/login_members.jsp" class="aashy2lightblue" rel="nofollow" id="regist">注册</a>
+			   			<span>|</span>
+		   		<a href="javascript:;" onclick="javascript:listOrder();" rel="nofollow" class="aashy2lightblue" id="orders">我的订单</a>
+		   		<span>|</span>
+				<a href="helper/user_reg.jsp" rel="nofollow" class="aashy2lightblue" id="help-link">帮助中心</a>
+		  	</div>
+		</div>
+	</div>
+	<div id="headbg">
+	 	<a class="head_logo" href="">
+	 		<img src="imges/movie/logo.png" alt="logo"></img>
+	 	</a>
+	  	<a href="javascript:;"><img src="uploadServer/resource/images/2014/09/20140912174327067135.jpg"
+					alt="生活因电影而美好"></img></a>
+	</div>
+<div id="menubg">
+  <div id="menu">
+   <ul>
+   	<!-- InstanceBeginEditable name="menu" -->
+    <li><a href="" title="电影首页" id="homeHd">电影首页</a></li>
+    <li><a class="sel_menu" href="trade/movie_times.jsp" title="电影排期" id="timeHd" target="_self">电影排期</a></li>
+    <li><a href="common/APP_ticket.jsp" title="移动购票" id="appHd" target="_blank">移动购票</a></li>
+    <li><a href="jingxuan/main.jsp" title="电影谈资" id="jingxuan" target="_blank">电影谈资</a></li>
+	<!--
+     <li class="imax"><a href="active/qwsy/index.jsp" title="IMAX"  target="_blank"><img src="imges/IMAX.png" alt="IMAX" /></a></li>
+	 -->
+    <li id="groupLI" style="display: none;"><a href="tuan/tuan.jsp" title="今日团购" id="groupHd">今日团购</a></li>
+	<li id="buy">
+		<a href="active/actPage.jsp" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		<img src="imges/movie/hdcx-btn.png" alt="活动促销"></img></a>
+    </li>
+   </ul>
+  </div>
+  </div> 
+</div>
+<script type="text/javascript">
+// 如果不支持团购，则不显示团购标签
+var isSupportGroup = false;
+for (var i=0; i<groupCityArray.length; i++) {
+	if (theCityCode.indexOf(groupCityArray[i][0]) >= 0) {
+		isSupportGroup = true;
+	}
+}
+if (isSupportGroup) {
+	$('#groupLI').show();
+} else {
+	$('#groupLI').hide();
+}
+
+var filePath = 'http://images.wandafilm.com/uploadServer/'
+var cityList = '';
+var serverName = 'www.wandafilm.com';
+var cqCinemaId = getCidByCookie();
+var theCinemaId = getCinemaArray(theCityCode)[0][0];//默认影院
+var c_arr = getCinemaArray(theCityCode);
+for(var i=0;i<c_arr.length;i++){
+	if(c_arr[i][0] == cqCinemaId){
+		theCinemaId = c_arr[i][0];
+		break;
+	}
+}
+
+$('#logind').click(function() {
+	var url = window.location.href;
+	window.location = basePath + 'common/login.jsp?url=' + url;
+});
+	
+</script>
+<div class="topAds">
+	<a href="ads/E/index.jsp" target="_blank">
+		<img src="imges/movie/ads/E.jpg" alt="活动广告位">
+	</a>
+</div>
+<div class="content">
+		<table style="margin-top: 0px; margin-bottom: 5px;" border="1"
+			cellpadding="0" cellspacing="0" width="1000">
+			<tbody>
+				<tr>
+					<th scope="col" style="border-left-color: #5db6e0; width: 150px;"
+						valign="middle">放映日期</th>
+					<th scope="col" class="th1" style="width: 310px">影城 <a
+						style="display: none" href="#" class="cinamasel1"
+						id="pictureLilang"></a>
+					</th>
+					<th scope="col" style="width: 240px">影片</th>
+					<th scope="col" style="width: 80px">时间</th>
+					<th colspan="2" scope="col" style="border-right-color: #5db6e0;">版本
+						<a href="#" class="version" onmouseover="showInfo('', 'version')"
+						onmouseout="hideInfo('', 'version')"></a>
+						<div id="versionInfo" class="vin" style="display: none;">
+							<div></div>
+							<!--用来处理高级浏览器边框阴影的空div-->
+						</div>
+					</th>
+				</tr>
+				<tr>
+					<td class="center" style="vertical-align: top">
+						<div class="cows6 sco" id="filmTimeDiv">
+							<a href="javascript: void(0);" class="gbcr" id="2015_05_07"
+								name="今日上映&nbsp;&nbsp;5月7日">今日上映 5月7日</a> <a
+								href="javascript: void(0);" id="2015_05_08"
+								name="明日上映&nbsp;&nbsp;5月8日">明日上映 5月8日</a> <a
+								href="javascript: void(0);" class="ys-date" style=""
+								id="2015_05_12" name="预&nbsp;售&nbsp;&nbsp;5月12日">预 售 5月12日</a> <a
+								href="javascript: void(0);" class="ys-date" style=""
+								id="2015_05_13" name="预&nbsp;售&nbsp;&nbsp;5月13日">预 售 5月13日</a> <a
+								href="javascript: void(0);" class="ys-date" style=""
+								id="2015_05_14" name="预&nbsp;售&nbsp;&nbsp;5月14日">预 售 5月14日</a> <a
+								href="javascript: void(0);" class="ys-date" style=""
+								id="2015_05_15" name="预&nbsp;售&nbsp;&nbsp;5月15日">预 售 5月15日</a> <a
+								href="javascript: void(0);" class="ys-date" style=""
+								id="2015_05_16" name="预&nbsp;售&nbsp;&nbsp;5月16日">预 售 5月16日</a> <a
+								href="javascript: void(0);" class="ys-date" style=""
+								id="2015_05_17" name="预&nbsp;售&nbsp;&nbsp;5月17日">预 售 5月17日</a>
+
+						</div>
+					</td>
+					<td class="" style="vertical-align: top;">
+						<div class="cows4" id="cinemaDiv">
+							<a class="" href="javascript: void(0);" id="304"
+								name="北京CBD万达广场店" citycode="8022251040">&nbsp;北京CBD万达广场店<span
+								style="display: none" class="bgis"><img id="img_304"
+									class="bgi" title="设为常用影城" name="0"
+									src="../imges/movie/icon_loading_gray.png"></span></a><a
+								class="gbcr" href="javascript: void(0);" id="311"
+								name="北京天通苑龙德广场店" citycode="8022251040">&nbsp;北京天通苑龙德广场店<span
+								style="display: none" class="bgis"><img id="img_311"
+									class="bgi" title="设为常用影城" name="0"
+									src="../imges/movie/icon_loading_gray.png"></span></a><a class=""
+								href="javascript: void(0);" id="333" name="北京石景山万达广场店"
+								citycode="8022251040">&nbsp;北京石景山万达广场店<span
+								style="display: none" class="bgis"><img id="img_333"
+									class="bgi" title="设为常用影城" name="0"
+									src="../imges/movie/icon_loading_gray.png"></span></a><a class=""
+								href="javascript: void(0);" id="849" name="北京通州万达广场店"
+								citycode="8022251040">&nbsp;北京通州万达广场店<span
+								style="display: none" class="bgis"><img id="img_849"
+									class="bgi" title="设为常用影城" name="0"
+									src="imges/movie/icon_loading_gray.png"></span></a>
+						</div>
+					</td>
+					<td style="vertical-align: top;">
+						<div class="cows3 sco" style="vertical-align: top" id="filmDiv">
+							<a href="javascript: void(0);" class="" id="all"
+								onclick="filmClick('all')">&nbsp;全部</a><a
+								href="javascript: void(0);" id="20150310093302001118"
+								onclick="filmClick('20150310093302001118')" title="">&nbsp;赤道</a><a
+								href="javascript: void(0);" id="20150313060438114187"
+								onclick="filmClick('20150313060438114187')" title="">&nbsp;何以笙箫默</a><a
+								href="javascript: void(0);" id="20150326090804641760"
+								onclick="filmClick('20150326090804641760')" title="">&nbsp;闯入者</a><a
+								href="javascript: void(0);" id="20150210090540260949"
+								onclick="filmClick('20150210090540260949')" title="">&nbsp;左耳</a><a
+								class="gbcr" href="javascript: void(0);"
+								id="20150226054043454037"
+								onclick="filmClick('20150226054043454037')" title="">&nbsp;速度与激情7</a><a
+								href="javascript: void(0);" id="20150226030928224539"
+								onclick="filmClick('20150226030928224539')" title="">&nbsp;念念</a>
+						</div>
+					</td>
+					<td class="center">
+						<div class="cows" id="periodDiv">
+							<a href="javascript: void(0);" class="" tt="0">全部</a> <a
+								href="javascript: void(0);" tt="1">上午</a> <a
+								href="javascript: void(0);" tt="2">下午</a> <a class="gbcr"
+								href="javascript: void(0);" tt="3">晚上</a>
+						</div>
+					</td>
+					<td class="center" id="verDiv">
+						<div class="cows2">
+							<a href="javascript: void(0);" class="gbcr" tt="0">全部</a> <a
+								href="javascript: void(0);" tt="3D">3D</a> <a
+								href="javascript: void(0);" tt="IMAX-3D">IMAX-3D</a>
+							<!--        <a href="javascript: void(0);" tt="双机3D">双机3D</a>-->
+						</div>
+						<div class="cows5">
+							<a href="javascript: void(0);" tt="2D">2D</a> <a
+								href="javascript: void(0);" tt="IMAX-2D">IMAX-2D</a> <a
+								href="javascript: void(0);" tt="XLAND">XLAND</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="tip_block"
+			style="text-align: right; position: relative; z-index: 1;">
+			不晚于影片开场前1小时可办理退票 | <span id="more_description">了解更多退票政策 <b>？</b></span>
+			<span id="more_description_tip"> 
+				<ol>
+					<li>影片开场前1小时可以通过万达电影网退票，影城现场服务台不支持退票；</li>
+					<li>使用积分、兑换码所兑换的影票不支持退票；</li>
+					<li>参与活动购买特价票不支持退票；</li>
+					<li>使用中国移动话费进行支付不支持退票；</li>
+					<li>电影票和卖品一起购买成功后，卖品不可单独退换，电影票和卖品退换需执行上述退票政策；</li>
+					<li>上述退票政策仅适用于通过万达电影网成功购买的电影票；</li>
+				</ol>
+			</span>
+			<style>
+				#more_description_tip {
+					width: 520px;
+				}
+				
+				#more_description_tip ol li {
+					width: 500px;
+				}
+			</style>
+						</div>
+		<span style="display: none;" id="titlez" class="titlez">
+	<a id="step1" href="movie_times.html"></a>
+    <a id="step2"></a>
+    <a id="step3"></a>
+    <a id="step4"></a>
+</span>
+<!-- 影片信息 -->
+		<div class="" style="display: block;" id="filmTime">
+			<b style="display: none;" class="title"
+				id="20150310093302001118_title">今日上映&nbsp;&nbsp;5月7日 &gt;&gt; <a
+				class="alightblue" target="_blank"
+				href="service/service.do?m=toFilmCity&amp;cityCode=8022251040&amp;cinemaId=311">&nbsp;北京天通苑龙德广场店</a>
+				&gt;&gt; <a class="alightblue" target="_blank"
+				href="baseInfo/film/film_info_init_hot_20150310093302001118.html">赤道</a></b>
+			<table style="display: none;" class="movie_list"
+				id="20150310093302001118_content" border="0" width="1000">
+				<tbody>
+					<tr class="bg bgc" align="center">
+						<td></td>
+						<td width="13%"><b class="title2">放映时间</b></td>
+						<td width="20%"><b class="title2">影厅空位</b></td>
+						<td width="8%"><b class="title2">语言</b></td>
+						<td width="8%"><b class="title2">版本</b></td>
+						<td width="8%"><b class="title2">片长</b></td>
+						<td width="19%"><b class="title2">优惠信息</b></td>
+						<td width="12%"><b class="title2">网购价</b></td>
+						<td width="12%"><b class="title2">购票</b></td>
+					</tr>
+					<tr style="display: none;" class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">17:00</b></td>
+						<td><span class="gc" style="float: left;">余336<em>/338</em></span><span
+							class="bi" onmouseover="showInfo('20150506093493189006', 'zuo')"
+							onmouseout="hideInfo('20150506093493189006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093493189006" class="zuo clearfix"><img
+									id="img_20150506093493189006" src="" class="zuoview"></img><img
+									id="tra_20150506093493189006" src="imges/movie/min_pt.gif"
+									class="zz"></img></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093493189006', 'ka')"
+									onmouseout="hideInfo('20150506093493189006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093493189006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093493189006', 'quan')"
+									onmouseout="hideInfo('20150506093493189006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093493189006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">80元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093493189006', '', '80')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">18:10</b></td>
+						<td><span class="gc" style="float: left;">余162<em>/164</em></span><span
+							class="bi" onmouseover="showInfo('20150506093493676006', 'zuo')"
+							onmouseout="hideInfo('20150506093493676006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093493676006" class="zuo clearfix"><img
+									id="img_20150506093493676006" src="" class="zuoview"></img><img
+										id="tra_20150506093493676006" src="imges/movie/min_pt.gif"
+										class="zz"></img></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093493676006', 'ka')"
+									onmouseout="hideInfo('20150506093493676006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093493676006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093493676006', 'quan')"
+									onmouseout="hideInfo('20150506093493676006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093493676006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：110元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093493676006', '', '90')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">19:20</b></td>
+						<td><span class="gc" style="float: left;">余336<em>/338</em></span><span
+							class="bi" onmouseover="showInfo('20150506093494355006', 'zuo')"
+							onmouseout="hideInfo('20150506093494355006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093494355006" class="zuo clearfix"><img
+									id="img_20150506093494355006" src="" class="zuoview"><img
+										id="tra_20150506093494355006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093494355006', 'ka')"
+									onmouseout="hideInfo('20150506093494355006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093494355006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093494355006', 'quan')"
+									onmouseout="hideInfo('20150506093494355006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093494355006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093494355006', '', '90')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">20:30</b></td>
+						<td><span class="gc" style="float: left;">余162<em>/164</em></span><span
+							class="bi" onmouseover="showInfo('20150506093494641006', 'zuo')"
+							onmouseout="hideInfo('20150506093494641006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093494641006" class="zuo clearfix"><img
+									id="img_20150506093494641006" src="" class="zuoview"><img
+										id="tra_20150506093494641006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093494641006', 'ka')"
+									onmouseout="hideInfo('20150506093494641006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093494641006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093494641006', 'quan')"
+									onmouseout="hideInfo('20150506093494641006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093494641006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：110元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093494641006', '', '90')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">21:35</b></td>
+						<td><span class="gc" style="float: left;">余334<em>/338</em></span><span
+							class="bi" onmouseover="showInfo('20150506093495318006', 'zuo')"
+							onmouseout="hideInfo('20150506093495318006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093495318006" class="zuo clearfix"><img
+									id="img_20150506093495318006" src="" class="zuoview"><img
+										id="tra_20150506093495318006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093495318006', 'ka')"
+									onmouseout="hideInfo('20150506093495318006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093495318006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093495318006', 'quan')"
+									onmouseout="hideInfo('20150506093495318006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093495318006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093495318006', '', '90')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">22:45</b></td>
+						<td><span class="gc" style="float: left;">余162<em>/164</em></span><span
+							class="bi" onmouseover="showInfo('20150506093495623006', 'zuo')"
+							onmouseout="hideInfo('20150506093495623006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093495623006" class="zuo clearfix"><img
+									id="img_20150506093495623006" src="" class="zuoview"><img
+										id="tra_20150506093495623006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093495623006', 'ka')"
+									onmouseout="hideInfo('20150506093495623006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093495623006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093495623006', 'quan')"
+									onmouseout="hideInfo('20150506093495623006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093495623006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：110元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093495623006', '', '90')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">23:55</b></td>
+						<td><span class="gc" style="float: left;">余336<em>/338</em></span><span
+							class="bi" onmouseover="showInfo('20150506093496362006', 'zuo')"
+							onmouseout="hideInfo('20150506093496362006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093496362006" class="zuo clearfix"><img
+									id="img_20150506093496362006" src="" class="zuoview"><img
+										id="tra_20150506093496362006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>国语</td>
+						<td name="version">3D</td>
+						<td>119分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093496362006', 'ka')"
+									onmouseout="hideInfo('20150506093496362006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093496362006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093496362006', 'quan')"
+									onmouseout="hideInfo('20150506093496362006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093496362006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093496362006', '', '90')">购票</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<b style="display: none;" class="title"
+				id="20150313060438114187_title">今日上映&nbsp;&nbsp;5月7日 &gt;&gt; <a
+				class="alightblue" target="_blank"
+				href="service/service.do?m=toFilmCity&amp;cityCode=8022251040&amp;cinemaId=311">&nbsp;北京天通苑龙德广场店</a>
+				&gt;&gt; <a class="alightblue" target="_blank"
+				href="baseInfo/film/film_info_init_hot_20150313060438114187.html">何以笙箫默</a></b>
+			<b style="display: none;" class="title"
+				id="20150326090804641760_title">今日上映&nbsp;&nbsp;5月7日 &gt;&gt; <a
+				class="alightblue" target="_blank"
+				href="service/service.do?m=toFilmCity&amp;cityCode=8022251040&amp;cinemaId=311">&nbsp;北京天通苑龙德广场店</a>
+				&gt;&gt; <a class="alightblue" target="_blank"
+				href="baseInfo/film/film_info_init_hot_20150326090804641760.html">闯入者</a></b>
+			<b class="title" id="20150226054043454037_title">今日上映&nbsp;&nbsp;5月7日
+				&gt;&gt; <a class="alightblue" target="_blank"
+				href="service/service.do?m=toFilmCity&amp;cityCode=8022251040&amp;cinemaId=311">&nbsp;北京天通苑龙德广场店</a>
+				&gt;&gt; <a class="alightblue" target="_blank"
+				href="baseInfo/film/film_info_init_hot_20150226054043454037.html">速度与激情7</a>
+			</b>
+			<table class="movie_list" id="20150226054043454037_content"
+				border="0" width="1000">
+				<tbody>
+					<tr class="bg bgc" align="center">
+						<td></td>
+						<td width="13%"><b class="title2">放映时间</b></td>
+						<td width="20%"><b class="title2">影厅空位</b></td>
+						<td width="8%"><b class="title2">语言</b></td>
+						<td width="8%"><b class="title2">版本</b></td>
+						<td width="8%"><b class="title2">片长</b></td>
+						<td width="19%"><b class="title2">优惠信息</b></td>
+						<td width="12%"><b class="title2">网购价</b></td>
+						<td width="12%"><b class="title2">购票</b></td>
+					</tr>
+					<tr style="display: none;" class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">17:40</b></td>
+						<td><span class="gc" style="float: left;">余222<em>/228</em></span><span
+							class="bi" onmouseover="showInfo('20150506093493419006', 'zuo')"
+							onmouseout="hideInfo('20150506093493419006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093493419006" class="zuo clearfix"><img
+									id="img_20150506093493419006" src="" class="zuoview"><img
+										id="tra_20150506093493419006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>英语</td>
+						<td name="version">3D</td>
+						<td>138分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093493419006', 'ka')"
+									onmouseout="hideInfo('20150506093493419006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093493419006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093493419006', 'quan')"
+									onmouseout="hideInfo('20150506093493419006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093493419006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">90元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093493419006', '', '90')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">19:00</b></td>
+						<td><span class="gc" style="float: left;">余256<em>/267</em></span><span
+							class="bi" onmouseover="showInfo('20150506093494221006', 'zuo')"
+							onmouseout="hideInfo('20150506093494221006', 'zuo')">座<!-- 座SPAN -->
+								<span style="display: none;" id="favor_zuo_20150506093494221006"
+								class="zuo clearfix"><img id="img_20150506093494221006"
+									src="trade/time.do?m=seatPreview&amp;showPk=20150506093494221006"
+									class="zuoview"><img id="tra_20150506093494221006"
+										src="imges/movie/min_pt.gif" class="zz"></span></span></td>
+						<td>英语</td>
+						<td name="version">IMAX-3D</td>
+						<td>138分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093494221006', 'ka')"
+									onmouseout="hideInfo('20150506093494221006', 'ka')">卡<span
+									style="display: none;" class="yh_tip_content"
+									id="ka_20150506093494221006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093494221006', 'quan')"
+									onmouseout="hideInfo('20150506093494221006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093494221006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">99元</b>
+						<div style="text-align: left;">影城价：150元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093494221006', '', '99')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">20:20</b></td>
+						<td><span class="gc" style="float: left;">余222<em>/228</em></span><span
+							class="bi" onmouseover="showInfo('20150506093494586006', 'zuo')"
+							onmouseout="hideInfo('20150506093494586006', 'zuo')">座<!-- 座SPAN -->
+								<span style="display: none;" id="favor_zuo_20150506093494586006"
+								class="zuo clearfix"><img id="img_20150506093494586006"
+									src="trade/time.do?m=seatPreview&amp;showPk=20150506093494586006"
+									class="zuoview"><img id="tra_20150506093494586006"
+										src="imges/movie/min_pt.gif" class="zz"></span></span></td>
+						<td>英语</td>
+						<td name="version">3D</td>
+						<td>138分钟</td>
+						<td><div style="" class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093494586006', 'ka')"
+									onmouseout="hideInfo('20150506093494586006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093494586006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093494586006', 'quan')"
+									onmouseout="hideInfo('20150506093494586006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093494586006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">100元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093494586006', '', '100')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">21:40</b></td>
+						<td><span class="gc" style="float: left;">余261<em>/267</em></span><span
+							class="bi" onmouseover="showInfo('20150506093495411006', 'zuo')"
+							onmouseout="hideInfo('20150506093495411006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093495411006" class="zuo clearfix"><img
+									id="img_20150506093495411006" src="" class="zuoview"><img
+										id="tra_20150506093495411006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>英语</td>
+						<td name="version">IMAX-3D</td>
+						<td>138分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093495411006', 'ka')"
+									onmouseout="hideInfo('20150506093495411006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093495411006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093495411006', 'quan')"
+									onmouseout="hideInfo('20150506093495411006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093495411006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">99元</b>
+						<div style="text-align: left;">影城价：150元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093495411006', '', '99')">购票</span></td>
+					</tr>
+					<tr class="bgc bgcs" align="center">
+						<td class=""></td>
+						<td><b class="org" name="showTime">23:00</b></td>
+						<td><span class="gc" style="float: left;">余226<em>/228</em></span><span
+							class="bi" onmouseover="showInfo('20150506093495954006', 'zuo')"
+							onmouseout="hideInfo('20150506093495954006', 'zuo')">座<!-- 座SPAN -->
+								<span id="favor_zuo_20150506093495954006" class="zuo clearfix"><img
+									id="img_20150506093495954006" src="" class="zuoview"><img
+										id="tra_20150506093495954006" src="imges/movie/min_pt.gif"
+										class="zz"></span></span></td>
+						<td>英语</td>
+						<td name="version">3D</td>
+						<td>138分钟</td>
+						<td><div class="hui_tags clearfix">
+								<span class="hjlz_l"
+									onmouseover="showInfo('20150506093495954006', 'ka')"
+									onmouseout="hideInfo('20150506093495954006', 'ka')">卡<span
+									class="yh_tip_content" id="ka_20150506093495954006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: -4px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>卡：支持会员卡、优享卡<a href="helper/yx_card.jsp"
+										target="_blank" class="alightblue">了解优享卡使用规则</a></span></span><span
+									class="hjlz_z"
+									onmouseover="showInfo('20150506093495954006', 'quan')"
+									onmouseout="hideInfo('20150506093495954006', 'quan')">券<span
+									class="yh_tip_content" id="quan_20150506093495954006"><span
+										style="background: url(imges/movie/min_pt.gif) no-repeat 6px 3px; left: 31px; height: 15px; width: 150px; top: -8px;"
+										class="ss"></span>券：支持兑换券、礼券<a
+										href="helper/exchange_ticket.jsp" target="_blank"
+										class="alightblue">了解兑换码使用规则</a></span></span>
+							</div></td>
+						<td><b class="org">100元</b>
+						<div style="text-align: left;">影城价：120元</div></td>
+						<td align="center"><span class="set_attention_sub"
+							onclick="selBuy('20150506093495954006', '', '100')">购票</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="display: block;" id="intro">
+  	<table class="intro">
+  		<tbody><tr>
+  			<td align="center"><span class="biz">座</span><span class="zuoyu">预览座位图</span></td>
+  			<td><span class="hjlz_l"><span class="zuoka">卡</span></span>&nbsp;支持会员卡、优享卡</td>
+  			<td><span class="hjlz_z"><span class="zuoka">券</span></span>&nbsp;支持兑换券、礼券</td>
+  			<td><span class="hjlz_j"><span class="zuoka">积</span></span>&nbsp;支持积分兑换影票</td>
+  			<td><span class="hjlz_h"><span class="zuoka">秒</span></span>&nbsp;支持秒杀权益购票</td>
+  		</tr>
+  	</tbody></table>
+</div>
+<p>&nbsp;</p>
+</div>
+
+<!--orderTipDialog start-->
+<style>
+#login_wrapper{ display:none;}
+#login_dialog .attention_edit_main{overflow-x:visible;}
+#login_dialog .attention_edit_title,#login_dialog .attention_edit_main{ color:#000000;}
+#login_dialog .attention_edit_main table{ line-height:normal;}
+#login_dialog .attention_edit_main table td{ height:auto; vertical-align:middle; padding:0 2px;}
+#login_dialog .attention_edit_main table td a{width: auto;}
+#login_dialog .attention_edit_main label{ display:block; font-size:16px; font-family:"微软雅黑";padding:0px; margin:0px; margin-bottom:2px; height:30px; line-height:30px;}
+#login_dialog .attention_edit_main .other_wrapper{ border-top:1px dashed #c1c1c1; margin-top:20px; padding-top:20px;}
+#login_dialog .attention_edit_main .other_login{ width:300px; margin:0 auto;line-height:24px;}
+#login_dialog .attention_edit_main input[type="text"],#login_dialog .attention_edit_main input[type="password"]{width:200px;}
+
+#login_dialog .login_tab{ margin:0 auto; padding-top:20px; width:auto; border:none;}
+#login_dialog .login_tab tr td, .login_tab tr th{ vertical-align:top;border:none; background-color:#fff; color:#909090; line-height:24px; font-family:"微软雅黑"; font-size:12px;}
+#login_dialog .login_tab tr td{ font-size:12px !important; width: 400px;}
+#login_dialog .login_tab a{ border:none !important; background-color:#fff !important;}
+#login_dialog .login_tab tr td:hover, .login_tab tr th:hover{ background:none;}
+#login_dialog .login_tab tr th{ text-align:right; font-weight:normal;width: 210px; font-size:14px !important;}
+#login_dialog .user, .password{width:200px; height:30px; border:1px solid #7490a9;line-height: 30px\9; padding-left:6px; background:url(imges/movie/input_icon_bg.png) no-repeat 0 0;}
+
+/* 使用短信密码登陆提示 */
+#login_dialog .pass_tip{ background:#ffffff url(imges/movie/user_center/passtip_icons.png) no-repeat 0px 3px; width:16px; height:22px; position:absolute; top: 2px; right: 14px; display: none;}
+#login_dialog .pass_tip:hover{ background-position:0px -36px;}
+#login_dialog .pass_tip_content{position: absolute; padding:5px 8px; letter-spacing:1px; width:222px; top:-2px; left:346px; border: solid 1px #909090; font-size:12px; line-height:16px; background-color:#FFF; color: #000;-webkit-box-shadow:1px 1px 3px #969696;-moz-box-shadow:1px 1px 3px #969696;box-shadow:1px 1px 3px #969696;filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=3);display: none;z-index:3;}
+#login_dialog .pass_tip_countdown{ right:-10px;}
+#login_dialog .pass_tip_content_countdown{ left:370px;}
+#login_dialog .ss{position:absolute;top:12px;left:-5px;}
+#login_dialog .forget{padding-left: 10px; height:30px;line-height:24px; position:absolute;top: 2px;left:208px;}
+#login_dialog .forget span{line-height: 24px;}
+#login_dialog .countdown{ font-weight:normal;vertical-align:middle;}
+#login_dialog #dl{ float:none;}
+#login_dialog .reme{ margin-right:5px; vertical-align: middle;}
+#login_dialog .text_reme{padding:0; display: inline-block; position:absolute; line-height:12px;}
+</style>
+
+
+
+
+<div id="login_wrapper">
+<!--loginDialog start-->
+<div class="set_attention" id="login_dialog">
+		<div class="set_attention_edit">
+			<div class="attention_edit_title">
+            </div>
+			<div class="attention_edit_main" style="margin-left:0px;">
+  <table class="login_tab">
+  	<tbody><tr>
+        <th>用户名：</th>
+        <td>
+        	<input class="user" value="请输入手机号" id="email" name="email" style="color:#909090; font-size:12px;" type="text"></input>
+        	<span id="error_tip" class="err_block"></span>
+        </td>
+    </tr>
+  	<tr>
+        <th>密码：</th>
+        <td>
+        	<div style="position:relative; width: 350px; height:30px; margin-bottom: 15px;/*+z-index:2;*/">
+        	<input class="password" id="password" name="password" style="color:#909090; font-size:12px;" type="password"></input>
+            <span class="err_block" style="padding-top:23px; float:left;"></span>
+            </div>
+   		</td>
+    </tr>
+    <tr>
+    	<th>&nbsp;</th>
+        <td>
+        	<img id="dlloading" src="imges/movie/loading.gif" alt="加载中" style="margin-left: 30px; display: none"></img>
+        	<button  id="dl" class="set_attention_sub">登录</button>	
+        </td>
+    </tr>
+  </tbody></table>
+			</div>
+		</div>
+	  </div>
+<!--loginDialog end-->
+</div>
+
+<script>
+$("#dialogFrame2").load(basePath + "login/login_dialog.jsp");
+</script>
+
+<script type="text/javascript">
+// 在未设置常用影城的情况下，查询最后一次查询的影城
+var cinemaId = '';	// 用户常去影城
+var lastCinemaId = '';	// 最后一次查询的影城
+var cid = '';	// 查询影片的影城
+var c_arr = getCinemaArray(theCityCode);
+
+var cinema = '';
+
+//常用影城是否为当前城市的
+for(var i=0;i<c_arr.length;i++){
+	if(c_arr[i][0] == cinemaId){
+			cid = cinemaId;
+			break;
+	}
+}
+
+var flag = '0';	// 0：常去影城，1：上一次查询的影城
+if(cid!=''){
+	cinema = cinemaId;
+	flag = '0';
+}
+else{
+	cinema = lastCinemaId;
+	flag = '1';
+}
+
+
+// 如果设置的常去影城在当前城市则查询，否则不去查询
+for(var i=0;i<c_arr.length;i++){
+	if(c_arr[i][0] == cinema){
+		cid = cinema;
+		break;
+	}
+}
+//第二个参数表示常去影城
+initCinemaLists(theCityCode, cid, flag);	// getArray.js
+initData(cid);
+
+// 未选择影城时闪烁
+var intervalId;
+var times = 0;
+var cinemas = $("#cinemaDiv a").length;
+if (cinemas == 1) {
+	$("#cinemaDiv a").each(function() {
+		$(this).addClass('gbcr');
+	});
+	$('#titlez').hide();
+	//lilang start
+	//alert("only one cinamas station 只有一个影城的情况");
+	$("#pictureLilang").attr('style', 'display: none');
+	//lilang end
+	var filmName = $(this).attr('name');
+	$('#filmTime').html('');
+	$('#filmTime').show();
+} else {
+	//lilang start
+	//alert("more or no cinemas statinon 多个影城或者没有影城的情况");
+	var rfi = $('#reqFilmId').val();
+	if (rfi == 'null') {
+		if (document.getElementById(cinemaId) == null && document.getElementById(lastCinemaId) == null) {
+			intervalId = setInterval(function ()	 {
+				var i = 0;
+				var div_class = "div_white";
+				var td_class = "td_white"
+				if (times % 2 == 0) {
+					div_class = "div_blue";
+					td_class = "td_blue";
+				}
+				$(".content table tr td").each(function() {
+					i ++;
+					if (i == 2) {
+						$(this).removeClass('td_blue');
+						$(this).removeClass('td_white');
+						$(this).addClass(td_class);
+					}
+				});
+				$("#cinemaDiv a").each(function() {
+					$(this).removeClass('div_white');
+					$(this).removeClass('div_blue');
+					$(this).addClass(div_class);
+				});
+				times ++;
+				if (times >= 5) {
+					clearInterval(intervalId);
+				}
+			}, 500);
+			}
+	}
+}
+</script>
+
+</body><!-- InstanceEnd --></html>

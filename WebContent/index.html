@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="description" content=""></meta>
+<meta name="Keywords" content=""></meta>
+<title>XXXXXXX</title>
+<link type="text/css" rel="stylesheet" href="styles/base.css"></link>
+<link type="text/css" rel="stylesheet" href="styles/home.css"></link>
+<link href="styles/jquery/ui-lightness/jquery-ui-1.8.5.custom.css"
+	rel="stylesheet" type="text/css"></link>
+<link rel="stylesheet" rev="stylesheet" href="css/global/boxy.css"
+	type="text/css" media="screen"></link>
+<link rel="stylesheet" rev="stylesheet" href="css/global/quicklogin.css"
+	media="screen"></link>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jsArray/cityArray.js"></script>
+<script type="text/javascript" src="js/jsArray/prvArray.js"></script>
+<script type="text/javascript" src="js/jsArray/cinemaArray.js"></script>
+<script type="text/javascript" src="js/jsArray/groupCityArray.js"></script>
+<script type="text/javascript" src="js/func/getArray.js"></script>
+<script type="text/javascript" src="js/func/printCity.js"></script>
+<script type="text/javascript" src="js/plus/jquery.boxy.js"></script>
+<script type="text/javascript" src="js/plus/ylDropDownList-1.2.js"></script>
+<script   type="text/javascript" src="js/countrecord.js?userName="></script>
+</head>
+<body>
+	<div id="head">
+		<div id="headnav">
+			<div id="headnav2" class="clearfix">
+				<div id="loginDiv">
+					<a href="" class="aashy2lightblue" id="home-link">首页</a> <a
+						href="javascript:void(0);" class="aashy2lightblue" rel="nofollow"
+						id="logind">登录</a> <a href="common/login_members.jsp"
+						class="aashy2lightblue" rel="nofollow" id="regist">注册</a> <span>|</span>
+					<a href="javascript:;" onclick="javascript:listOrder();"
+						rel="nofollow" class="aashy2lightblue" id="orders">我的订单</a> <span>|</span>
+					<a href="helper/user_reg.jsp" rel="nofollow"
+						class="aashy2lightblue" id="help-link">帮助中心</a>
+				</div>
+			</div>
+		</div>
+		<div id="headbg">
+			<a class="head_logo" href=""> <img src="imges/movie/logo.png"
+				alt="logo"></img>
+			</a>
+			<div id="head_flash">
+				<a href="javascript:;"><img
+					src="uploadServer/resource/images/2014/09/20140912174327067135.jpg"
+					alt="生活因电影而美好"></img></a>
+			</div>
+		</div>
+		<div id="menubg">
+			<div id="menu">
+				<ul>
+					<!-- InstanceBeginEditable name="menu" -->
+					<li><a class="sel_menu" href="" title="电影首页" id="homeHd">电影首页</a></li>
+					<li><a href="trade/movie_times.jsp" title="电影排期" id="timeHd"
+						target="_self">电影排期</a></li>
+					<li><a href="common/APP_ticket.jsp" title="移动购票" id="appHd"
+						target="_blank">移动购票</a></li>
+					<li><a href="jingxuan/main.jsp" title="电影谈资" id="jingxuan"
+						target="_blank">电影谈资</a></li>
+					<!--
+     <li class="imax"><a href="active/qwsy/index.jsp" title="IMAX"  target="_blank"><img src="imges/IMAX.png" alt="IMAX" /></a></li>
+	 -->
+					<li id="groupLI" style="display: none;"><a
+						href="tuan/tuan.jsp" title="今日团购" id="groupHd">今日团购</a></li>
+					<li id="buy">
+						<!-- 
+		<a href="javascript:void(0)" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		<a href="active/actPage.jsp" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		--> <a href="active/actPage.jsp" target="_blank" title="活动促销"
+						class="buy_btn" id="actUrl"> <img
+							src="imges/movie/hdcx-btn.png" alt="活动促销"></img></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- main start -->
+	<div class="content clearfix">
+		<div class="homeleft">
+			<!-- 图片轮播 -->
+			<div class="pic_view">
+				<div id="homeadvert">
+					<span title="关闭"></span>
+				</div>
+				<div  class="pic_list">
+					<a href="#" target="_blank"> <img
+						src="uploadServer/resource/images/2015/05/20150504184747236444.jpg"
+						data-tag="2"></img>
+					</a>
+				</div>
+				<div class="pic_tools">
+					<span class="" data-tag="1">&nbsp;</span> <span class="current"
+						data-tag="2">&nbsp;</span> <span class="" data-tag="3">&nbsp;</span>
+					<span class="" data-tag="4">&nbsp;</span> <span class=""
+						data-tag="5">&nbsp;</span>
+				</div>
+			</div>
+			<div id="con">
+				<ul id="tags">
+					<li class="selectTag" id="onShowId"
+						onclick="selectTag('tagContent0',this)">正在热映</li>
+					<li id="nextShowId" onclick="selectTag('tagContent1',this)">即将上映</li>
+				</ul>
+				<div id="tagContent" class="clearfix">
+
+					<div class="tagContent selectTag" id="tagContent0">
+						<!-- 正在热映 -->
+						<ul style="height: auto;">
+							<li style="padding-left: 0;">
+								<div class="home_container">
+									<a href="#"> <img
+										src="uploadServer/resource/images/2015/04/20150424095454982896.jpg"
+										border="0" height="232px" vspace="0" width="174px"></img>
+									</a>
+									<div class="home_play">
+										<div class="home_tag">
+											<span>3D/IMAX-3D</span>
+										</div>
+										<span class="icon_play" title="复仇者联盟2：奥创纪元"> <a
+											href="#" class="filmInfo" title="影片详情"></a> <a
+											href="trade/movie_times.jsp?filmId=20150313020941007384"
+											class="buyTicket" title="去购票"></a>
+										</span> <a style="text-align: center;" class="awhite home_talk2"
+											href="baseInfo/film/film_info_init_hot_20150313020941007384.html"
+											title="复仇者联盟2：奥创纪元">超级英雄团大战奥创大军</a>
+										<div class="home_content"></div>
+									</div>
+								</div>
+								<dl>
+									<a href="#" title="复仇者联盟2：奥创纪元" class="moviename">复仇者联盟2：奥创纪元</a>
+								</dl>
+							</li>
+
+
+							<li>
+								<div class="home_container">
+									<a
+										href="baseInfo/film/film_info_init_hot_20150310093302001118.html"
+										title="赤道"> <!-- 2520 --> <!-- 评价人数达到或超过50人则显示喜欢率图标 -->
+
+										<div style="display: block;" class="icon_movie hot_icon">
+											57%<br>喜欢率 
+										</div> <img
+										src="uploadServer/resource/images/2015/04/20150425183409922274.jpg"
+										alt="赤道" border="0" height="232px" vspace="0" width="174px"></img>
+									</a>
+									<div style="display: none;" class="home_play">
+										<div class="home_tag">
+											<span>3D</span>
+										</div>
+										<span class="icon_play" title="赤道"> <a href="#"
+											class="filmInfo" title="影片详情"></a> <a
+											href="trade/movie_times.jsp?filmId=20150310093302001118"
+											class="buyTicket" title="去购票"></a>
+										</span> <a style="text-align: center;" class="awhite home_talk2"
+											href="baseInfo/film/film_info_init_hot_20150310093302001118.html"
+											title="赤道">“三张”联手 燃情烧脑</a>
+										<div class="home_content"></div>
+									</div>
+								</div>
+								<dl>
+									<a href="#" title="赤道" class="moviename">赤道</a>
+									<a href="#" target="_blank" class="title-icon1" title="看点爆料"> <img
+										src="imges/movie/title_icon1.png" alt="看点爆料"></img></a>
+								</dl>
+							</li>
+
+
+								<li>
+									<div class="home_container">
+										<a
+											href="baseInfo/film/film_info_init_hot_20150323024716936159.html"
+											title="超能查派"> <!-- 0 --> <!-- 评价人数达到或超过50人则显示喜欢率图标 --> <img
+											src="uploadServer/resource/images/2015/04/20150428184600281787.jpg"
+											alt="超能查派" border="0" height="232px" vspace="0" width="174px"></a>
+										<div style="display: none;" class="home_play">
+											<div class="home_tag"></div>
+											<span class="icon_play" title="超能查派"> <a
+												href="baseInfo/film/film_info_init_hot_20150323024716936159.html"
+												class="filmInfo" title="影片详情"></a> <a
+												href="trade/movie_times.jsp?filmId=20150323024716936159"
+												class="buyTicket" title="去购票"></a>
+											</span> <a style="text-align: center;" class="awhite home_talk2"
+												href="baseInfo/film/film_info_init_hot_20150323024716936159.html"
+												title="超能查派">《第九区》导演最新力作</a>
+											<div class="home_content"></div>
+										</div>
+									</div>
+									<dl>
+										<a href="#"
+											title="超能查派" class="moviename">超能查派</a>
+										<a href="#"
+											target="_blank" class="title-icon1" title="看点爆料"> <img
+											src="imges/movie/title_icon1.png" alt="看点爆料"></img></a>
+									</dl>
+							</li> <input value="20150313060438114187"
+								id="filmId_20150313060438114187"
+								name="filmId_20150313060438114187" type="hidden">
+
+									<li>
+										<div class="home_container">
+											<a
+												href="baseInfo/film/film_info_init_hot_20150313060438114187.html"
+												title="何以笙箫默"> <!-- 1659 --> <!-- 评价人数达到或超过50人则显示喜欢率图标 -->
+
+												<div style="display: block;" class="icon_movie hot_icon">
+													65%<br>喜欢率 
+												</div> <img
+												src="uploadServer/resource/images/2015/04/20150421093449107911.jpg"
+												alt="何以笙箫默" border="0" height="232px" vspace="0"
+												width="174px"></a>
+											<div style="display: none;" class="home_play">
+												<div class="home_tag"></div>
+												<span class="icon_play" title="何以笙箫默"> <a
+													href="baseInfo/film/film_info_init_hot_20150313060438114187.html"
+													class="filmInfo" title="影片详情"></a> <a
+													href="trade/movie_times.jsp?filmId=20150313060438114187"
+													class="buyTicket" title="去购票"></a>
+												</span> <a style="text-align: center;" class="awhite home_talk2"
+													href="baseInfo/film/film_info_init_hot_20150313060438114187.html"
+													title="何以笙箫默">黄晓明杨幂虐恋情深</a>
+												<div class="home_content"></div>
+											</div>
+										</div>
+										<dl>
+											<a href="#"
+												title="何以笙箫默" class="moviename">何以笙箫默</a>
+											<a href="#" target="_blank" class="title-icon1" title="看点爆料"> <img
+												src="imges/movie/title_icon1.png" alt="看点爆料"></a>
+										</dl>
+								</li> 
+						</ul>
+						<!-- 人气新片 -->
+
+					</div>
+
+					<!-- 即将上映 -->
+					<div class="tagContent " id="tagContent1">
+						<ul>
+							<li style="padding-left: 0;">
+								<div class="home_container">
+									<a href="javascript:void(0)"
+										title="明日世界">
+										<div class="icon_movie next_icon">
+											2795人<br>想看
+										</div> <img
+										src="uploadServer/resource/images/2015/04/20150427153053662818.jpg"
+										alt="明日世界" border="0" height="232px" vspace="0" width="174px"></img>
+									</a>
+									<div class="home_play">
+										<div class="home_tag">
+											<span>IMAX-2D</span>
+										</div>
+										<span class="icon_play"> <a
+											href="baseInfo/film/filmIndex.do?m=film_info_init_next&amp;filmId=20150427033122947041"
+											class="filmInfo" title="影片详情"></a>
+										</span> <a style="text-align: center;" class="awhite home_talk2"
+											href="baseInfo/film/filmIndex.do?m=film_info_init_next&amp;filmId=20150427033122947041">乔治克鲁尼勇斗机器人</a>
+										<div class="home_content"></div>
+									</div>
+								</div>
+								<dl>
+										<a href="javascript:void(0)"
+											id="button_min_1" name="button_min_1" class="button_min"
+											title="想看"></a> <a href="javascript:void(0)" title="明日世界" class="moviename">明日世界</a>
+											<div class="movie_time">05月26日</div>
+								</dl>
+							</li>
+
+							<li>
+								<div class="home_container">
+									<a href="javascript:void(0)"
+										title="杀破狼2">
+										<div class="icon_movie next_icon">
+											5247人<br>想看
+										</div> <img src="uploadServer/resource/images/2015/04/20150427145423102717.jpg"
+										alt="杀破狼2" border="0" height="232px" vspace="0" width="174px"></img>
+									</a>
+									<div class="home_play">
+										<div class="home_tag"></div>
+										<span class="icon_play"> 
+										<a href="javascript:void(0)" class="filmInfo" title="影片详情"></a>
+										</span> 
+										<a style="text-align: center;" class="awhite home_talk2"
+											href="javascript:void(0)">吴京对决泰国“拳霸”</a>
+										<div class="home_content"></div>
+									</div>
+								</div>
+								<dl>
+									<a href="javascript:void(0)" id="button_min_2" name="button_min_2" class="button_min"
+											title="想看"></a> 
+									<a href="javascript:void(0)" title="杀破狼2" class="moviename">杀破狼2</a>
+									<div class="movie_time">06月18日</div>
+								</dl>
+							</li>
+
+							<li>
+								<div class="home_container">
+									<a
+										href="baseInfo/film/filmIndex.do?m=film_info_init_next&amp;filmId=20150316033839926707"
+										title="阿里巴巴：大盗奇兵">
+
+										<div class="icon_movie next_icon">
+											799人<br>想看
+										</div> <img
+										src="uploadServer/resource/images/2015/04/20150414145830446684.jpg"
+										alt="阿里巴巴：大盗奇兵" border="0" height="232px" vspace="0"
+										width="174px"></img>
+									</a>
+									<div class="home_play">
+										<div class="home_tag"></div>
+										<span class="icon_play"> <a href="javascript:void(0)"
+											class="filmInfo" title="影片详情"></a>
+										</span> <a style="text-align: center;" class="awhite home_talk2"
+											href="baseInfo/film/filmIndex.do?m=film_info_init_next&amp;filmId=20150316033839926707">阿里巴巴寻找王者之心</a>
+										<div class="home_content"></div>
+									</div>
+								</div>
+								<dl>
+									 <a href="javascript:void(0)" id="button_min_3" name="button_min_3" class="button_min"
+											title="想看"></a> 
+									<a href="javascript:void(0)"
+											title="阿里巴巴：大盗奇兵" class="moviename">阿里巴巴：大盗奇兵</a>
+											<div class="movie_time">05月23日</div>
+								</dl>
+							</li>
+
+							<li>
+								<div class="home_container">
+									<a href="javascript:void(0)" title="重生爱人">
+										<div class="icon_movie next_icon">
+											822人<br>想看
+										</div> <img src="uploadServer/resource/images/2015/04/20150408141154286046.jpg"
+										alt="重生爱人" border="0" height="232px" vspace="0" width="174px"></img>
+									</a>
+									<div class="home_play">
+										<div class="home_tag"></div>
+										<span class="icon_play"> <a
+											href="baseInfo/film/filmIndex.do?m=film_info_init_next&amp;filmId=20150408021227480981"
+											class="filmInfo" title="影片详情"></a>
+										</span> <a style="text-align: center;" class="awhite home_talk2"
+											href="baseInfo/film/filmIndex.do?m=film_info_init_next&amp;filmId=20150408021227480981">王丽坤化身清纯校花</a>
+										<div class="home_content"></div>
+									</div>
+								</div>
+								<dl>
+									<a href="javascript:void(0)" id="button_min_4" name="button_min_4" class="button_min"
+											title="想看"></a> 
+									<a href="javascript:void(0)" title="重生爱人" class="moviename">重生爱人</a>
+									<div class="movie_time">05月15日</div>
+								</dl>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="homeright">
+			<div class="homeright_shortcut clearfix">
+				<a href="trade/movie_times.jsp" class="quick-buy init-quick-buy">快速购票</a>
+				<a href="javascript:void(0)" class="monthly" onclick="listOrder()">我的订单</a>
+				<a href="baseInfo/point/m_init.html" class="against">积分兑换</a> <a
+					href="javascript:void(0)" class="exchangeSearch"
+					onclick="changeDialogNew();">兑换码查询</a>
+				<!--<a href="javascript:;" class="xinshouyindao">新手引导</a>-->
+				<a href="helper/exchange_ticket.jsp" class="exchangeHelp">兑换码帮助</a>
+				<a href="service/service.do?m=toFilmCity&amp;cityCode=8022251040"
+					class="cinamaMess">影城信息</a>
+				<!-- 我的优惠，如果有未使用的兑换码或礼券，图标上显示数量总和  add by suicl at 2013/5/20 -->
+				<!-- <a href="javascript:void(0)" onclick="myCoupons()" class="myCoupons" >我的优惠
+		    	<!-- 暂不显示数字，只显示圆圈  by suicl at 2013/7/10
+		    	<div style="display:none;font-size:12px;color: #ffffff;font-weight: 700;position: relative;bottom:78px;left:46px;width:23px;height:20px;;text-align: center;">
+		      			
+		      	</div> -->
+				<!-- </a> -->
+				<!-- <a href="javascript:void(0)" class="recharge" onclick="cardRecharge()">在线充值</a> -->
+				<a class="manyidu" href="javascript:void(0)" onclick="surveyMYD()">满意度调查</a>
+				<a class="recharge" href="javascript:void(0)"
+					onclick="membershipCardActivation()">会员卡激活</a>
+			</div>
+
+			<!-- 服务公告 -->
+
+			<div class="homeright_news">
+				<a href="common/news.jsp">服务公告</a> <span> <a class="aashy"
+					href="baseInfo/news/news.do?m=getServiceDetailById&amp;newsId=20150303032323902979"
+					title="万达影城儿童观影购票指南"> 万达影城儿童观影购票指南 </a> <a class="aashy"
+					href="baseInfo/news/news.do?m=getServiceDetailById&amp;newsId=20150104053506760447"
+					title="关于会员积分年底清零通知"> 关于会员积分年底清零通知 </a> <a class="aashy"
+					href="baseInfo/news/news.do?m=getServiceDetailById&amp;newsId=20141107030525624281"
+					title="“万达影城百年卡”使用声明"> “万达影城百年卡”使用声明 </a>
+
+				</span>
+			</div>
+			<!-- 热门活动 -->
+		</div>
+	</div>
+	<!--content end-->
+
+	<!-- siderBar start -->
+	<div id="menu_sideBar">
+		<div id="sideBar" class="sideBar_overflow">
+			<ul>
+				<li><a href="#" class="item1"><span class="intro">在线充值</span></a></li>
+				<li><a href="#" class="item2"><span class="intro">查询影城</span></a></li>
+				<li><a href="#" class="item3"><span class="intro">电影月刊</span></a></li>
+				<li><a href="#" class="item4"><span class="intro">礼品盒子</span></a></li>
+				<li><a href="#" class="item5"><span class="intro">我的订单</span></a></li>
+				<li><a href="#" class="item6"><span class="intro">升级会员</span></a></li>
+				<li><a href="#" class="item7"><span class="intro">积分兑换</span></a></li>
+			</ul>
+		</div>
+		<a href="#" class="item8"><span class="intro">在线服务</span></a>
+	</div>
+	<script type="text/javascript">
+	$(".home_container").hover(function(){
+		$(this).find("div[class='home_play']").show();
+	},function(){
+		$(this).find("div[class='home_play']").hide();
+	})
+	function selectTag(liid,currentE){
+		$("#tagContent0").hide();
+		$("#tagContent1").hide();
+		$("#"+liid).show();
+		$("#tags").find("li").removeClass("selectTag");
+		currentE.className='selectTag'; 
+	}
+	</script>
+	<!-- 注册成功后显示的内容 begin  -->
+	<style>
+#set_attention_user .attention_edit_main div {
+	margin-top: 15px;
+}
+
+#set_attention_user h3 {
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 5px;
+	padding-bottom: 3px;
+	height: 24px;
+	line-height: 24px;
+}
+
+#set_attention_user .attention_edit_main div ul li {
+	float: left;
+	width: 100px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	border: 1px solid #5db6e0;
+	cursor: pointer;
+}
+
+#set_attention_user .attention_edit_main div label {
+	margin-right: 20px;
+}
+
+#set_attention_user .attention_edit_main div label input {
+	margin-right: 5px;
+}
+
+#set_attention_user .attention_edit_main div label select {
+	text-align: center;
+	vertical-align: middle;
+}
+</style>
+
+	<!-- 查询兑换码 浮层 start -->
+
+	<div id="dialogFrame" style="display: none;">
+
+		<style>
+#bind_phone_wrapper {
+	display: none;
+}
+
+#bind_phone_dialog .attention_edit_main {
+	height: auto;
+}
+
+#bind_phone_dialog .attention_edit_title, #bind_phone_dialog  .attention_edit_main
+	{
+	color: #000000;
+}
+
+#bind_phone_dialog .attention_edit_main label {
+	display: block;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 2px;
+	padding-bottom: 3px;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 15px;
+}
+
+#bind_phone_dialog .attention_edit_main input {
+	width: 200px;
+}
+
+#bind_phone_dialog .set_attention_sub_div {
+	float: right;
+}
+
+#bind_phone_dialog .bind_phone_success {
+	_height: 150px;
+	min-height: 150px;
+	display: none;
+}
+
+#bind_phone_dialog .bind_phone_success p {
+	height: 100px;
+	line-height: 100px;
+	font-size: 24px;
+	text-align: center;
+	color: #000000;
+}
+
+#bind_phone_dialog .cancel {
+	float: left;
+}
+</style>
+	</div>
+
+	<div id="dialogFrame2" style="display: none;">
+
+
+		<style>
+#login_wrapper {
+	display: none;
+}
+
+#login_dialog .attention_edit_main {
+	overflow-x: visible;
+}
+
+#login_dialog .attention_edit_title, #login_dialog .attention_edit_main
+	{
+	color: #000000;
+}
+
+#login_dialog .attention_edit_main table {
+	line-height: normal;
+}
+
+#login_dialog .attention_edit_main table td {
+	height: auto;
+	vertical-align: middle;
+	padding: 0 2px;
+}
+
+#login_dialog .attention_edit_main table td a {
+	width: auto;
+}
+
+#login_dialog .attention_edit_main label {
+	display: block;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 2px;
+	height: 30px;
+	line-height: 30px;
+}
+
+#login_dialog .attention_edit_main .other_wrapper {
+	border-top: 1px dashed #c1c1c1;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
+#login_dialog .attention_edit_main .other_login {
+	width: 300px;
+	margin: 0 auto;
+	line-height: 24px;
+}
+
+#login_dialog .attention_edit_main input[type="text"], #login_dialog .attention_edit_main input[type="password"]
+	{
+	width: 200px;
+}
+
+#login_dialog .login_tab {
+	margin: 0 auto;
+	padding-top: 20px;
+	width: auto;
+	border: none;
+}
+
+#login_dialog .login_tab tr td, .login_tab tr th {
+	vertical-align: top;
+	border: none;
+	background-color: #fff;
+	color: #909090;
+	line-height: 24px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+#login_dialog .login_tab tr td {
+	font-size: 12px !important;
+	width: 400px;
+}
+
+#login_dialog .login_tab a {
+	border: none !important;
+	background-color: #fff !important;
+}
+
+#login_dialog .login_tab tr td:hover, .login_tab tr th:hover {
+	background: none;
+}
+
+#login_dialog .login_tab tr th {
+	text-align: right;
+	font-weight: normal;
+	width: 210px;
+	font-size: 14px !important;
+}
+
+#login_dialog .user, .password {
+	width: 200px;
+	height: 30px;
+	border: 1px solid #7490a9;
+	line-height: 30px\9;
+	padding-left: 6px;
+	background:
+		url(http://www.wandafilm.com:80/imges/movie/input_icon_bg.png)
+		no-repeat 0 0;
+}
+
+/* 使用短信密码登陆提示 */
+#login_dialog .pass_tip {
+	background: #ffffff
+		url(http://www.wandafilm.com:80/imges/movie/user_center/passtip_icons.png)
+		no-repeat 0px 3px;
+	width: 16px;
+	height: 22px;
+	position: absolute;
+	top: 2px;
+	right: 14px;
+	display: none;
+}
+
+#login_dialog .pass_tip:hover {
+	background-position: 0px -36px;
+}
+
+#login_dialog .pass_tip_content {
+	position: absolute;
+	padding: 5px 8px;
+	letter-spacing: 1px;
+	width: 222px;
+	top: -2px;
+	left: 346px;
+	border: solid 1px #909090;
+	font-size: 12px;
+	line-height: 16px;
+	background-color: #FFF;
+	color: #000;
+	-webkit-box-shadow: 1px 1px 3px #969696;
+	-moz-box-shadow: 1px 1px 3px #969696;
+	box-shadow: 1px 1px 3px #969696;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696',
+		Direction=135, Strength=3);
+	display: none;
+	z-index: 3;
+}
+
+#login_dialog .pass_tip_countdown {
+	right: -10px;
+}
+
+#login_dialog .pass_tip_content_countdown {
+	left: 370px;
+}
+
+#login_dialog .ss {
+	position: absolute;
+	top: 12px;
+	left: -5px;
+}
+
+#login_dialog .forget {
+	padding-left: 10px;
+	height: 30px;
+	line-height: 24px;
+	position: absolute;
+	top: 2px;
+	left: 208px;
+}
+
+#login_dialog .forget span {
+	line-height: 24px;
+}
+
+#login_dialog .countdown {
+	font-weight: normal;
+	vertical-align: middle;
+}
+
+#login_dialog #dl {
+	float: none;
+}
+
+#login_dialog .reme {
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+#login_dialog .text_reme {
+	padding: 0;
+	display: inline-block;
+	position: absolute;
+	line-height: 12px;
+}
+</style>
+
+<!-- login wapper .html -->
+
+	</div>
+</body>
+</html>

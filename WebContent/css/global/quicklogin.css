@@ -1,0 +1,97 @@
+/***********q_login_bg_new***************/
+.q_login_bg_new{
+	
+}
+.q_login_bg_new a.q_login_c{
+	width:19px;
+	height:20px;
+	text-indent:-2000px;
+	overflow:hidden;	
+}
+.q_login_bg_new .tp{	
+	height:20px;
+	width:240px;
+	margin-bottom:8px;
+}
+.q_login_bg_new .tips{
+	background:url(../../images/user/q_tip_ico.png) left center no-repeat;
+	height:20px;
+	width:245px;
+	line-height:20px;
+	padding-left:25px;
+	border:1px solid #F33;
+	color:#C00;
+	display:none;
+}
+.q_login_bg_new fieldset{
+	height:29px;
+	line-height:29px;
+	vertical-align:middle;
+	padding-bottom:10px;
+}
+.q_login_bg_new fieldset.at{
+	height:20px;
+	line-height:20px;
+}
+.q_login_bg_new label{
+	background:url(../../images/user/lab_ico.png) center center no-repeat;
+	float:left;
+	display:inline-block;
+	width:66px;
+	text-align:center;
+	color:#000;
+	margin-right:10px;
+}
+.q_login_bg_new input{
+	float:left;
+	font-size:14px;
+	line-height:25px;
+	width:190px;
+	height:25px;
+	color:#666;
+}
+.q_login_bg_new input.on{
+	border:2px solid #39C;
+	color:#39C;
+}
+.q_login_bg_new input#au_to_new{
+	height:20px;
+	line-height:20px;
+	width:20px;
+	margin-left:75px;
+}
+.q_login_bg_new label.auto{
+	width:auto;
+	background:none;
+}
+.q_login_bg_new .sub a{ float:left; height:25px; vertical-align:bottom; line-height:30px; text-decoration:underline; color:#39C;}
+.q_login_bg_new a#q_login_submit_new{
+	float:left;
+	background:url(../../images/user/login_bt.gif) no-repeat;
+	width:87px;
+	height:25px;
+	line-height:20px;
+	text-align:center;
+	color:#FFF;
+	text-decoration:none;
+	margin-left:75px;
+}
+
+.q_login_bg_new .reg{
+	background:url(../../images/user/q_tips_ico.png) left center no-repeat;
+	height:18px;
+	text-align:left;
+	line-height:18px;
+	margin:10px 10px 10px 75px;
+	padding-left:24px;
+}
+
+.q_login_bg_new .reg span{
+	color:#000;
+}
+
+.q_login_bg_new .reg a{
+	color:#F00;
+	text-decoration:underline;
+}
+/***********E q_login_bg_new*************/

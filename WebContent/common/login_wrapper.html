@@ -1,0 +1,83 @@
+<div id="login_wrapper">
+			<!--loginDialog start-->
+			<input id="validShow" value="" type="hidden">
+				<div class="set_attention" id="login_dialog">
+					<div class="set_attention_edit">
+						<div class="attention_edit_title"></div>
+						<div class="attention_edit_main" style="margin-left: 0px;">
+							<table class="login_tab">
+								<tbody>
+									<tr>
+										<th>用户名：</th>
+										<td><input class="user" value="请输入手机号" id="email"
+											name="email" style="color: #909090; font-size: 12px;"
+											type="text"> <span id="error_tip" class="err_block"></span></td>
+									</tr>
+									<tr>
+										<th>密码：</th>
+										<td>
+											<div
+												style="position: relative; width: 350px; height: 30px; margin-bottom: 15px;">
+												<input class="password" id="password" name="password"
+													style="color: #909090; font-size: 12px;" type="password">
+													<!-- 
+            <a href="javascript:;" class="forget aashy2lightblue has_underline"><span>使用随机密码登录</span><b class="countdown"></b></a>
+             --> <a href="javascript:;" class="forget aashy2lightblue"
+													style="display: none"><span>使用随机密码登录</span><b
+														class="countdown"></b></a> <span class="pass_tip"></span> <span
+													class="pass_tip_content"> <img
+														src="imges/movie/left_min_pt.gif" class="ss" alt="<">
+															随机密码：系统将发送临时密码到您注册时填写的手机或邮箱中。可在一小时内凭此密码登陆万达电影网站，过时失效。 </span> <span
+													class="err_block" style="padding-top: 23px; float: left;"></span>
+											</div>
+										</td>
+									</tr>
+									<tr id="validCode" style="padding-bottom: 10px; display: none">
+										<th>验证码：</th>
+										<td>
+											<div style="position: relative;">
+												<input
+													style="width: 100px; display: inline-block; float: left;"
+													class="password" id="yzm" type="text"> <a
+													style="float: left; width: 150px; + width: 250px; left: 115px; padding-left: 10px; position: absolute; top: 2px; height: 30px; cursor: pointer;"
+													href="javascript:;" class="aashy2lightblue"> <span
+														style="float: left; margin-top: -3px;"><img
+															id="codesrc" src="servlet/checkCode?" alt="验证码"></span> <b
+														id="codesp"
+														style="float: left; padding-left: 5px; line-height: 28px; font-weight: normal;">&nbsp;看不清？</b></a>
+													<span class="err_block"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th>&nbsp;</th>
+										<td><label
+											style="display: block; height: 45px; font-size: 12px;">
+												<input class="reme" id="autoLogin" name="autoLogin"
+												type="checkbox">下次自动登录 
+										</label></td>
+									</tr>
+									<tr>
+										<th>&nbsp;</th>
+										<td><img id="dlloading" src="imges/movie/loading.gif"
+											alt="加载中" style="margin-left: 30px; display: none">
+												<button href="javascript:void(0)" id="dl"
+													class="set_attention_sub">登录</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="other_wrapper">
+								<div class="other_login">
+									使用其他网站账号登录： <span class="sina" style="cursor: pointer"
+										onclick="window.location.href='weibo/oauth.do?m=sinaOauth'"></span>
+									<span class="db" style="cursor: pointer"
+										onclick="window.location.href='weibo/oauth.do?m=doubanOauth'"></span>
+
+									<span class="alipay" style="cursor: pointer"
+										onclick="window.location.href='weibo/oauth.do?m=alipay'"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!--loginDialog end-->
+		</div>

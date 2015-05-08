@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="description" content=""></meta>
+<meta name="Keywords" content=""></meta>
+<title>登录</title>
+<link href="../styles/base.css" rel="stylesheet" type="text/css"></link>
+<link href="../styles/login.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js/jsArray/cityArray.js"></script>
+<script type="text/javascript" src="../js/jsArray/prvArray.js"></script>
+<script type="text/javascript" src="../js/jsArray/cinemaArray.js"></script>
+<script type="text/javascript" src="../js/jsArray/groupCityArray.js"></script>
+<script type="text/javascript" src="../js/func/getArray.js"></script>
+<script type="text/javascript" src="../js/func/printCity.js"></script>
+<script type="text/javascript" src="../js/plus/jquery.boxy.js"></script>
+<script type="text/javascript" src="../js/plus/ylDropDownList-1.2.js"></script>
+<link rel="stylesheet" rev="stylesheet" href="../css/global/boxy.css"
+	type="text/css" media="screen"></link>
+<script  type="text/javascript"
+	src="../js/countrecord.js?userName="></script>
+<script type="text/javascript" src="../js/common/base.js"></script>
+<script type="text/javascript" src="../js/common/login.js"></script>
+<link rel="stylesheet" rev="stylesheet" href="../css/global/quicklogin.css"
+	media="screen"></link>
+</head>
+
+<body>
+	<div class="loginWrap">
+		<div class="loginContent">
+			<div id="head">
+				<input id="showLevelHintFlag" value="" type="hidden"></input> <input
+					id="memberLevelCode" value="" type="hidden"></input> <input
+					id="levelPointsOffset" value="" type="hidden"></input>
+				<div id="headnav">
+					<div id="headnav2" class="clearfix">
+						<div id="loginDiv">
+							<a href="" class="aashy2lightblue" id="home-link">首页</a> <a
+								href="javascript:void(0);" class="aashy2lightblue"
+								rel="nofollow" id="logind">登录</a> <a
+								href="../common/login_members.jsp" class="aashy2lightblue"
+								rel="nofollow" id="regist">注册</a> <span>|</span> <a
+								href="javascript:;" onclick="javascript:listOrder();"
+								rel="nofollow" class="aashy2lightblue" id="orders">我的订单</a> <span>|</span>
+							<a href="../helper/user_reg.jsp" rel="nofollow"
+								class="aashy2lightblue" id="help-link">帮助中心</a>
+						</div>
+					</div>
+				</div>
+				<div id="headbg">
+					<a class="head_logo" href=""> <img src="../imges/movie/logo.png"
+						alt="logo" /></a>
+					<div id="head_flash">
+						<a href="javascript:;"><img
+							src="http://images.wandafilm.com/uploadServer/resource/images/2014/09/20140912174327067135.jpg"
+							alt="生活因电影而美好" /></a>
+					</div>
+
+
+				</div>
+				<div id="menubg">
+					<div id="menu">
+						<ul>
+							<!-- InstanceBeginEditable name="menu" -->
+							<li style=""><a href="" title="电影首页" id="homeHd">电影首页</a></li>
+							<li><a href="trade/movie_times.jsp" title="电影排期" id="timeHd"
+								target="_self">电影排期</a></li>
+							<li><a href="common/APP_ticket.jsp" title="移动购票" id="appHd"
+								target="_blank">移动购票</a></li>
+							<li><a href="../jingxuan/main.jsp" title="电影谈资" id="jingxuan"
+								target="_blank">电影谈资</a></li>
+							<!--
+     <li class="imax"><a href="active/qwsy/index.jsp" title="IMAX"  target="_blank"><img src="../imges/IMAX.png" alt="IMAX" /></a></li>
+	 -->
+							<li id="groupLI" style="display: none;"><a
+								href="../tuan/tuan.jsp" title="今日团购" id="groupHd">今日团购</a></li>
+							<li style="" id="buy">
+								<!-- 
+		<a href="javascript:void(0)" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		<a href="active/actPage.jsp" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		--> <a href="../active/actPage.jsp" target="_blank" title="活动促销"
+								class="buy_btn" id="actUrl"> <img
+									src="../imges/movie/hdcx-btn.png" alt="活动促销" /></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--head end-->
+
+
+			<!-- main start -->
+			<div class="content clearfix">
+				<div style="float: left; margin-top: -38px;">
+					<div
+						style="height: 20px; background-color: #fff; margin: 0 10px; float: left; width: 982px;"></div>
+					<div class="left">
+						<h1>用户登录</h1>
+						<table style="margin: 50px auto;" class="login_tab">
+							<tbody>
+								<tr>
+									<th>用户名：</th>
+									<td><input class="user" value="请输入手机号" id="email"
+										name="email" type="text" /> <span class="err_block"
+										id="error_tip"></span></td>
+								</tr>
+								<tr>
+									<th>密码：</th>
+									<td>
+										<div
+											style="position: relative; width: 350px; height: 30px; margin-bottom: 15px;">
+											<input class="password" id="password" name="password"
+												type="password" /> <a href="../get_pass/get_pass.jsp"
+												target="_blank" class="aashy2lightblue"
+												style="padding-left: 10px; height: 30px; position: absolute; top: 2px; left: 220px; width: 60px; line-height: 14px; height: 14px; margin-top: 5px;">找回密码</a>
+											<span class="err_block"
+												style="padding-top: 23px; float: left;"></span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>&nbsp;</th>
+									<td><img id="dlloading" src="../imges/movie/loading.gif"
+										alt="加载中" style="margin-left: 30px; display: none" />
+										<button type="button" id="dl" class="set_attention_sub">登录</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="no">
+					<span class="you">还没有账号？<a href="../common/login_members.html"
+						class="alightblue">立即注册</a></span> <span style="padding-right: 0;">使用其它网站账号登录</span>
+					<a href="../weibo/oauth.do?m=sinaOauth" class="sina aashy"></a> <a
+						href="../weibo/oauth.do?m=doubanOauth" class="db aashy"></a> <a
+						href="../weibo/oauth.do?m=alipay" class="alipay aashy"></a>
+				</div>
+			</div>
+			<!-- main end -->
+		</div>
+	</div>
+	<!-- main end -->
+	<include>footer.html</include>
+
+</body>
+</html>
+

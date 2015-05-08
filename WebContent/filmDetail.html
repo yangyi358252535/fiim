@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="description" content=""></meta>
+<meta name="Keywords" content=""></meta>
+<title>XXXXX</title>
+<link href="styles/jquery/ui-lightness/jquery-ui-1.8.5.custom.css"
+	rel="stylesheet" type="text/css"></link>
+<link type="text/css" rel="stylesheet"
+	href="js/jquery-lightbox-0.5/css/jquery.lightbox-0.5.css"></link>
+<link type="text/css" rel="stylesheet" href="styles/base.css"></link>
+<link rel="stylesheet" href="styles/movie_details2.css" type="text/css"></link>
+<link rel="stylesheet" href="css/global/user_pagination.css"
+	type="text/css"></link>
+<link rel="stylesheet" rev="stylesheet" href="css/global/quicklogin.css"
+	media="screen"></link>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jsArray/cityArray.js"></script>
+<script type="text/javascript" src="js/jsArray/prvArray.js"></script>
+<script type="text/javascript" src="js/jsArray/cinemaArray.js"></script>
+<script type="text/javascript" src="js/jsArray/groupCityArray.js"></script>
+<script type="text/javascript" src="js/func/getArray.js"></script>
+<script type="text/javascript" src="js/func/printCity.js"></script>
+<script type="text/javascript" src="js/plus/jquery.boxy.js"></script>
+<script type="text/javascript" src="js/plus/ylDropDownList-1.2.js"></script>
+<link rel="stylesheet" rev="stylesheet" href="css/global/boxy.css"
+	type="text/css" media="screen"></link>
+<script id="countrecorduser" type="text/javascript"
+	src="js/countrecord.js?userName="></script>
+<script type="text/javascript" src="js/plus/jquery.knob.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+
+<script type="text/javascript"
+	src="js/jquery-lightbox-0.5/js/jquery.lightbox-0.5.min.js"></script>
+<script type="text/javascript" src="js/plus/jquery.pagination.js"></script>
+<script language="javascript" src="js/movie/movie_details2.js"></script>
+<script type="text/javascript" src="js/common/base.js"></script>
+</head>
+<body>
+	<div id="head">
+		<div id="headnav">
+			<div id="headnav2" class="clearfix">
+				<div id="loginDiv">
+					<a href="" class="aashy2lightblue" id="home-link">首页</a> <a
+						href="javascript:void(0);" class="aashy2lightblue" rel="nofollow"
+						id="logind">登录</a> <a href="common/login_members.jsp"
+						class="aashy2lightblue" rel="nofollow" id="regist">注册</a> <span>|</span>
+					<a href="javascript:;" onclick="javascript:listOrder();"
+						rel="nofollow" class="aashy2lightblue" id="orders">我的订单</a> <span>|</span>
+					<a href="helper/user_reg.jsp" rel="nofollow"
+						class="aashy2lightblue" id="help-link">帮助中心</a>
+				</div>
+			</div>
+		</div>
+		<div id="headbg">
+			<a class="head_logo" href=""> <img src="imges/movie/logo.png"
+				alt="logo"></img>
+			</a>
+			<div id="head_flash">
+				<a href="javascript:;"><img
+					src="uploadServer/resource/images/2014/09/20140912174327067135.jpg"
+					alt="生活因电影而美好"></img></a>
+			</div>
+
+
+		</div>
+		<div id="menubg">
+			<div id="menu">
+				<ul>
+					<!-- InstanceBeginEditable name="menu" -->
+					<li><a href="" title="电影首页" id="homeHd">电影首页</a></li>
+					<li><a href="trade/movie_times.jsp" title="电影排期" id="timeHd"
+						target="_self">电影排期</a></li>
+					<li><a href="common/APP_ticket.jsp" title="移动购票" id="appHd"
+						target="_blank">移动购票</a></li>
+					<li><a href="jingxuan/main.jsp" title="电影谈资" id="jingxuan"
+						target="_blank">电影谈资</a></li>
+					<!--
+     <li class="imax"><a href="active/qwsy/index.jsp" title="IMAX"  target="_blank"><img src="imges/IMAX.png" alt="IMAX" /></a></li>
+	 -->
+					<li id="groupLI" style="display: none;"><a
+						href="tuan/tuan.jsp" title="今日团购" id="groupHd">今日团购</a></li>
+					<li id="buy">
+						<!-- 
+		<a href="javascript:void(0)" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		<a href="active/actPage.jsp" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		--> <a href="active/actPage.jsp" target="_blank" title="活动促销"
+						class="buy_btn" id="actUrl"> <img
+							src="imges/movie/hdcx-btn.png" alt="活动促销"></img></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- main start -->
+	<div class="content">
+		<div class="crumbs">
+			您当前的位置：<a class="aashy" href="" style="display: inline">首页</a> &gt; <a
+				class="aashy" href="" style="display: inline">正在热映</a> &gt; <a
+				class="ablack" href="javascript:void(0)"
+				style="display: inline; cursor: default;"
+				title="万物生长 Ever Since We Love">万物生长</a>
+		</div>
+		<span class="flash_name">
+			<h3>
+				<em style="float: left; font-style: normal;"> 万物生长 <span>
+						范冰冰韩庚“虎狼大战” </span>
+				</em> <a id="button_minx2" href="javascript:void(0)">分享给好友</a> <a
+					id="button_minx1" href="#cinecism">发表影评</a> <a id="button_minx3"
+					href="trade/movie_times.jsp?filmId=20150209105708913224">我要购票</a>
+			</h3>
+		</span>
+		<div
+			style="width: 990px; height: 384px; padding-right: 10px; position: relative; background: url(http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112440901834.jpg) no-repeat;">
+			<!-- 专题页面连接 -->
+
+			<a
+				href="http://images.wandafilm.com/uploadServer/resource/topics/2015/04/20150416110321312900/index.html"
+				target="_blank" style="display: block; width: 100%; height: 100%;"></a>
+
+		</div>
+		<div class="bgwhite movie_information">
+			<div class="date clearfix">
+				<div class="date_right">
+					<!-- 预告片 -->
+					<div id="flash"></div>
+					<div class="appraise">
+						<h5>
+							万达观影指数 <a href="javascript:void(0)" id="details"
+								class="aashy2lightblue">我要参与</a>
+						</h5>
+					</div>
+				</div>
+
+				<div class="info_details">
+					<h5>
+						上映日期：2015-04-17&nbsp;&nbsp;&nbsp;&nbsp; <span>2427人想看</span>
+					</h5>
+					<dl>
+						<dd>导演：李玉</dd>
+						<dd>主演：范冰冰 /韩庚 /齐溪 /沈婷婷 /沙溢 /杨迪 /张博宇 /赵一维 /吴莫愁</dd>
+						<dd>类型：爱情/剧情</dd>
+					</dl>
+					<a id="button_orange_gp"
+						href="trade/movie_times.jsp?filmId=20150209105708913224"
+						class="set_attention_sub">购票</a>
+				</div>
+
+				<div class="story">
+					<div
+						style="font-size: 14px; color: #222; line-height: 26px; float: left; padding-top: 30px;">
+						<a class="icon1"></a>
+						<div id="storyDetails">
+							<p>电影改编自冯唐所著小说《万物生长》三部曲第2部。秋水（韩庚 饰），医科大学的学生，与厚朴（张博宇 饰）、黄芪（杨迪
+								饰）、辛夷（赵一维 饰）是死党，正值青春期的他们在旺盛荷尔蒙支配下异常生猛，不停地寻找着“猎食”对象。含苞待放的小满（李梦
+								饰）是秋水念念不忘的初恋；大腿紧实的白露（齐溪 饰）是与秋水互相奉献童贞的前任；熟透了的柳......</p>
+							<a class="show_more2 alightblue" target="_blank"
+								href="http://images.wandafilm.com/uploadServer/resource/topics/2015/04/20150416110321312900/index.html">more</a>
+						</div>
+					</div>
+					<script>
+						//设置剧情字数长度
+						if ($('#storyDetails').length) {
+							var _length = 165;
+							var msg = $.trim($('#storyDetails p').text());
+							$('#storyDetails p').text(
+									msg.length < _length ? msg.substring(0,
+											msg.length) : msg.substring(0,
+											_length)
+											+ "......");
+							$('.show_more2').text('more');
+						}
+					</script>
+				</div>
+
+				<div class="story pic_box">
+					<ul>
+
+
+						<li id="pic_box1">
+							<h5>&lt;剧照&gt;</h5>
+							<div class="preview_pic more_pic1 load">
+								<img
+									style="width: 172px; height: auto; margin-top: 27px; visibility: visible;"
+									src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165521148404.jpg"
+									alt="preview_pic"></img>
+							</div>
+							<div style="display: none;">
+								<div id="pic_item1" class="clearfix pic_item movie_imges">
+
+									<a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165521148404.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165521148404.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165708391131.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165708391131.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/03/20150325103503226568.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/03/20150325103503226568.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165757208200.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165757208200.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165815542201.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150413165815542201.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142613349821.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142613349821.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142644714056.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142644714056.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142711923071.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142711923071.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142740092157.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142740092157.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142845552248.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416142845552248.jpg"
+										alt="万物生长"></img>
+									</a>
+
+								</div>
+							</div>
+						</li>
+						<li id="pic_box2">
+							<h5>&lt;花絮&gt;</h5>
+							<div class="preview_pic more_pic2 load">
+								<img
+									style="width: 172px; height: auto; margin-top: 27px; visibility: visible;"
+									src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112015642747.jpg"
+									alt="preview_pic"></img>
+							</div>
+							<div style="display: none;">
+								<div id="pic_item2" class="pic_item clearfix">
+
+									<a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112015642747.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112015642747.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111946436535.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111946436535.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111910743016.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111910743016.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111843143147.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111843143147.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111817995915.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111817995915.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111747346019.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416111747346019.jpg"
+										alt="万物生长"></img>
+									</a>
+
+								</div>
+							</div>
+						</li>
+						<li id="pic_box3">
+							<h5>&lt;海报&gt;</h5>
+							<div class="preview_pic more_pic3 haibao_small_pic load">
+								<img
+									style="height: 172px; width: auto; margin-top: 3px; visibility: visible;"
+									src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112346074236.jpg"
+									alt="preview_pic"></img>
+							</div>
+							<div style="display: none;">
+								<div id="pic_item3" class="pic_item pic_btn3 clearfix">
+									<a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112259972209.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112259972209.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112228741972.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112228741972.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112201931843.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112201931843.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112137004508.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112137004508.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112106213260.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112106213260.jpg"
+										alt="万物生长"></img>
+									</a> <a
+										href="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112039792754.jpg">
+										<img
+										src="http://images.wandafilm.com/uploadServer/resource/images/2015/04/20150416112039792754.jpg"
+										alt="万物生长"></img>
+									</a>
+
+								</div>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- main end -->
+	<div id="dialogFrame2" style="display: none;">
+
+
+	</div>
+	<script>
+		$("#dialogFrame2").load(basePath + "login/login_dialog.jsp");
+	</script>
+<style>
+#login_wrapper {
+	display: none;
+}
+
+#login_dialog .attention_edit_main {
+	overflow-x: visible;
+}
+
+#login_dialog .attention_edit_title, #login_dialog .attention_edit_main
+	{
+	color: #000000;
+}
+
+#login_dialog .attention_edit_main table {
+	line-height: normal;
+}
+
+#login_dialog .attention_edit_main table td {
+	height: auto;
+	vertical-align: middle;
+	padding: 0 2px;
+}
+
+#login_dialog .attention_edit_main table td a {
+	width: auto;
+}
+
+#login_dialog .attention_edit_main label {
+	display: block;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 2px;
+	height: 30px;
+	line-height: 30px;
+}
+
+#login_dialog .attention_edit_main .other_wrapper {
+	border-top: 1px dashed #c1c1c1;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
+#login_dialog .attention_edit_main .other_login {
+	width: 300px;
+	margin: 0 auto;
+	line-height: 24px;
+}
+
+#login_dialog .attention_edit_main input[type="text"], #login_dialog .attention_edit_main input[type="password"]
+	{
+	width: 200px;
+}
+
+#login_dialog .login_tab {
+	margin: 0 auto;
+	padding-top: 20px;
+	width: auto;
+	border: none;
+}
+
+#login_dialog .login_tab tr td, .login_tab tr th {
+	vertical-align: top;
+	border: none;
+	background-color: #fff;
+	color: #909090;
+	line-height: 24px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+#login_dialog .login_tab tr td {
+	font-size: 12px !important;
+	width: 400px;
+}
+
+#login_dialog .login_tab a {
+	border: none !important;
+	background-color: #fff !important;
+}
+
+#login_dialog .login_tab tr td:hover, .login_tab tr th:hover {
+	background: none;
+}
+
+#login_dialog .login_tab tr th {
+	text-align: right;
+	font-weight: normal;
+	width: 210px;
+	font-size: 14px !important;
+}
+
+#login_dialog .user, .password {
+	width: 200px;
+	height: 30px;
+	border: 1px solid #7490a9;
+	line-height: 30px\9;
+	padding-left: 6px;
+	background: url(imges/movie/input_icon_bg.png) no-repeat 0 0;
+}
+
+/* 使用短信密码登陆提示 */
+#login_dialog .pass_tip {
+	background: #ffffff url(imges/movie/user_center/passtip_icons.png)
+		no-repeat 0px 3px;
+	width: 16px;
+	height: 22px;
+	position: absolute;
+	top: 2px;
+	right: 14px;
+	display: none;
+}
+
+#login_dialog .pass_tip:hover {
+	background-position: 0px -36px;
+}
+
+#login_dialog .pass_tip_content {
+	position: absolute;
+	padding: 5px 8px;
+	letter-spacing: 1px;
+	width: 222px;
+	top: -2px;
+	left: 346px;
+	border: solid 1px #909090;
+	font-size: 12px;
+	line-height: 16px;
+	background-color: #FFF;
+	color: #000;
+	-webkit-box-shadow: 1px 1px 3px #969696;
+	-moz-box-shadow: 1px 1px 3px #969696;
+	box-shadow: 1px 1px 3px #969696;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696',
+		Direction=135, Strength=3);
+	display: none;
+	z-index: 3;
+}
+
+#login_dialog .pass_tip_countdown {
+	right: -10px;
+}
+
+#login_dialog .pass_tip_content_countdown {
+	left: 370px;
+}
+
+#login_dialog .ss {
+	position: absolute;
+	top: 12px;
+	left: -5px;
+}
+
+#login_dialog .forget {
+	padding-left: 10px;
+	height: 30px;
+	line-height: 24px;
+	position: absolute;
+	top: 2px;
+	left: 208px;
+}
+
+#login_dialog .forget span {
+	line-height: 24px;
+}
+
+#login_dialog .countdown {
+	font-weight: normal;
+	vertical-align: middle;
+}
+
+#login_dialog #dl {
+	float: none;
+}
+
+#login_dialog .reme {
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+#login_dialog .text_reme {
+	padding: 0;
+	display: inline-block;
+	position: absolute;
+	line-height: 12px;
+}
+</style>
+</body>
+</html>

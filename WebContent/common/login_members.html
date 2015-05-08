@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="description" content=""></meta>
+<meta name="Keywords" content=""></meta>
+<title>注册_成为会员</title>
+<link type="text/css" rel="stylesheet" href="../styles/base.css"></link>
+<link type="text/css" rel="stylesheet" href="../styles/login_members.css"></link>
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+
+<script type="text/javascript" src="../js/jsArray/cityArray.js"></script>
+<script type="text/javascript" src="../js/jsArray/prvArray.js"></script>
+<script type="text/javascript" src="../js/jsArray/cinemaArray.js"></script>
+<script type="text/javascript" src="../js/jsArray/groupCityArray.js"></script>
+
+<script type="text/javascript" src="../js/func/getArray.js"></script>
+<script type="text/javascript" src="../js/func/printCity.js"></script>
+<script type="text/javascript" src="../js/plus/jquery.boxy.js"></script>
+<script type="text/javascript" src="../js/plus/ylDropDownList-1.2.js"></script>
+<link rel="stylesheet" rev="stylesheet" href="../css/global/boxy.css"
+	type="text/css" media="screen"></link>
+<link rel="stylesheet" rev="stylesheet" href="../css/global/quicklogin.css"
+	media="screen"></link>
+<script type="text/javascript"
+	src="../js/countrecord.js?userName="></script>
+<script type="text/javascript" src="../js/common/base.js"></script>
+<script type="text/javascript" src="../js/common/login_members.js"></script>
+</head>
+<body>
+	<div class="registerWrap">
+		<div class="registerContent">
+			<div id="head">
+				<div id="headnav">
+					<div id="headnav2" class="clearfix">
+						<div id="loginDiv">
+							<a href="" class="aashy2lightblue" id="home-link">首页</a> <a
+								href="javascript:void(0);" class="aashy2lightblue"
+								rel="nofollow" id="logind">登录</a> <a
+								href="../common/login_members.jsp" class="aashy2lightblue"
+								rel="nofollow" id="regist">注册</a> <span>|</span> <a
+								href="javascript:;" onclick="javascript:listOrder();"
+								rel="nofollow" class="aashy2lightblue" id="orders">我的订单</a> <span>|</span>
+							<a href="../helper/user_reg.jsp" rel="nofollow"
+								class="aashy2lightblue" id="help-link">帮助中心</a>
+						</div>
+					</div>
+				</div>
+				<div id="headbg">
+					<a class="head_logo" href=""> <img src="../imges/movie/logo.png"
+						alt="logo" /></a>
+					<div id="head_flash">
+						<a href="javascript:;"><img
+							src="http://images.wandafilm.com/uploadServer/resource/images/2014/09/20140912174327067135.jpg"
+							alt="生活因电影而美好" /></a>
+					</div>
+
+
+				</div>
+				<div id="menubg">
+					<div id="menu">
+						<ul>
+							<!-- InstanceBeginEditable name="menu" -->
+							<li style=""><a href="" title="电影首页" id="homeHd">电影首页</a></li>
+							<li><a href="../trade/movie_times.jsp" title="电影排期" id="timeHd"
+								target="_self">电影排期</a></li>
+							<li><a href="../common/APP_ticket.jsp" title="移动购票" id="appHd"
+								target="_blank">移动购票</a></li>
+							<li><a href="../jingxuan/main.jsp" title="电影谈资" id="jingxuan"
+								target="_blank">电影谈资</a></li>
+							<!--
+     <li class="imax"><a href="active/qwsy/index.jsp" title="IMAX"  target="_blank"><img src="imges/IMAX.png" alt="IMAX" /></a></li>
+	 -->
+							<li id="groupLI" style="display: none;"><a
+								href="../tuan/tuan.jsp" title="今日团购" id="groupHd">今日团购</a></li>
+							<li style="" id="buy">
+								<!-- 
+		<a href="javascript:void(0)" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		<a href="active/actPage.jsp" target="_blank" title="活动促销" class="buy_btn" id="actUrl">
+		--> <a href="../active/actPage.jsp" target="_blank" title="活动促销"
+								class="buy_btn" id="actUrl"> <img
+									src="../imges/movie/hdcx-btn.png" alt="活动促销" /></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="content clearfix">
+				<div style="float: left; margin-top: -38px;">
+					<div
+						style="height: 20px; background-color: #fff; margin: 0 10px; float: left; width: 982px;"></div>
+					<div class="left">
+						<h1 style="border-bottom: 1px solid #5DB6E0;">欢迎加入万达电影网</h1>
+						<dl class="reg-main clearfix">
+							<dt>手机号：</dt>
+							<dd>
+								<input id="mobile" name="mobile" maxlength="11" type="text" />
+								<span class="err_block" id="mobileError"></span>
+							</dd>
+							<li style="margin-top: -15px; height: 40px;"><tt>&nbsp;</tt>
+								<span class="err" id="mobileError"></span></li>
+							<dt id="emcode2">确认码：</dt>
+							<dd>
+								<input id="mobileCode" name="mobileCode" type="text" /> <span
+									class="err_block" id="mobileCodeError"></span>
+							</dd>
+
+
+							<dt>密码：</dt>
+							<dd>
+								<input id="mobilePass" name="mobilePass" type="password" /> <input
+									id="password2" type="text" /> <span class="passwd" id="passwd"></span>
+								<span class="err_block" id="mobilePassError"></span>
+							</dd>
+							<dt>确认密码：</dt>
+							<dd>
+								<input id="reMobilePass" name="reMobilePass" type="password" />
+								<span class="err_block" id="reMobilePassError"></span>
+							</dd>
+
+							<dt>&nbsp;</dt>
+							<dt>&nbsp;</dt>
+							<dd>
+								<img id="regloading" src="../imges/movie/loading.gif" alt="加载中"
+									style="margin-left: 30px; display: none;" />
+								<button id="mobileBtn" class="set_attention_sub">注册</button>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="no">
+					<span class="you">已有账号？<a href="../common/login.jsp"
+						class="alightblue">直接登录</a></span> <span style="padding-right: 0;">使用其它网站账号登录</span>
+					<a href="../weibo/oauth.do?m=sinaOauth" class="sina aashy"></a> <a
+						href="../weibo/oauth.do?m=doubanOauth" class="db aashy"></a> <a
+						href="../weibo/oauth.do?m=alipay" class="alipay aashy"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--footer start-->
+
+
+	<!--footer end-->
+
+
+
+</body>
+<!-- InstanceEnd -->
+</html>
+
